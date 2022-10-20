@@ -3,18 +3,21 @@ const height = 20;
 
 const numberOfRows = 25;
 const numberOfColumns = 25;
-const numberOfEras = 50;
+let numberOfEras;
 
 var board = new Array(numberOfRows);
 
 window.addEventListener('load', function () {
-    drawBoard();
+
 });
 
 function drawBoard() {
 
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
+
+    const birthThresHold = document.getElementById("birth-value").innerHTML;
+    const survivalThresHold = document.getElementById("survival-value").innerHTML;
 
     for (var i = 0; i < numberOfRows; i++) {
         board[i] = new Array(numberOfColumns);
@@ -25,9 +28,11 @@ function drawBoard() {
 
             var randomNumber = randomIntFromInterval(0, 10);
 
-            var cellAlive = randomNumber > 6 ? 1 : 0;
+            var chanceToBeAlive = document.getElementById("chance-value").innerHTML * 10;
 
-            var cell = new Cell();
+            var cellAlive = randomNumber > chanceToBeAlive ? 0 : 1;
+
+            var cell = new Cell(birthThresHold, survivalThresHold);
             cell.status = cellAlive;
 
             currentLine[j] = cell;
@@ -126,12 +131,14 @@ function drawBoard() {
 var era = 0;
 
 function startGame() {
+    numberOfEras = document.getElementById("eras-value").innerHTML;
+    
     setTimeout(function () {
         era++;
-        if (era < 50) {
+        if (era < numberOfEras) {
             run();
         }
-    }, 1000);
+    }, 500);
 }
 
 function run() {
@@ -142,11 +149,9 @@ function run() {
         for (var j = 0; j < numberOfColumns; j++) {
             var cell = board[i][j];
             var cellState = cell.getState();
-            //console.log(cellState, i, j);
-            var color = cell.getState() == 0 ? "black" : "white";
+            var color = cellState == 0 ? "black" : "white";
             ctx.fillStyle = color;
             ctx.fillRect(j * width, i * height, width, height);
-
         }
     }
 

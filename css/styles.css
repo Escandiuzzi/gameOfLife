@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+}
+
+.label-container {
+    display: flex;
+    margin-left: 8px;
+}
+
+#chance-value {
+    margin-left: 4px;
+}
+
+#birth-value {
+    margin-left: 4px;
+}
+
+#survival-value {
+    margin-left: 4px;
+}
+
+#eras-value {
+    margin-left: 4px;
+}
+
+.slider {
+    width: 300px;
+    margin-left: 40px;
+}
+
+.start-button {
+    margin-top: 32px;
+}

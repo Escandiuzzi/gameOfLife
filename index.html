@@ -1,13 +1,60 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="./js/drawer.js"></script> 
-        <script src="./js/cell.js"></script>
-        <script src="./js/random.js"></script>
-    </head>
-    <body>
-        <canvas id="canvas" width="500" height="500" style="border:1px solid #d3d3d3;">
 
-        </canvas>
-    </body>
+<head>
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <script src="./js/sliders.js"></script>
+    <script src="./js/drawer.js"></script>
+    <script src="./js/cell.js"></script>
+    <script src="./js/random.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="game">
+            <div class="board">
+                <canvas id="canvas" width="500" height="500" style="border:1px solid #d3d3d3;"></canvas>
+            </div>
+
+            <div class="config">
+                <div>
+                    <div class="label-container">
+                        <p class="slider-label">Chance for a given cell to be filled during intialization:</p>
+                        <p id="chance-value"></p>
+                    </div>
+                    <input type="range" min="0" max="1" step="0.01" value="0.5" class="slider" id="chance">
+                </div>
+
+                <div>
+                    <div class="label-container">
+                        <p class="slider-label">Birth threshold:</p>
+                        <p id="birth-value"></p>
+                    </div>
+                    <input type="range" min="0" max="8" value="4" class="slider" id="birth">
+                </div>
+
+                <div>
+                    <div class="label-container">
+                        <p class="slider-label">Survival threshold:</p>
+                        <p id="survival-value"></p>
+                    </div>
+                    <input type="range" min="0" max="8" value="4" class="slider" id="survival">
+                </div>
+
+                <div>
+                    <div class="label-container">
+                        <p class="slider-label">Number of eras:</p>
+                        <p id="eras-value"></p>
+                    </div>
+                    <input type="range" min="0" max="50" value="25" class="slider" id="eras">
+                </div>
+            </div>
+
+            <button class="start-button" onclick="drawBoard()">Start</button>
+        </div>
+    </div>
+
+</body>
+
 </html>

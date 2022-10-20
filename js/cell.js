@@ -2,6 +2,14 @@ class Cell {
     status = 0;
     neighbors = [];
 
+    birthThresHold = 0;
+    survivalThreshold = 0;
+
+    constructor(birthThresHold, survivalThreshold) {
+        this.birthThresHold = birthThresHold;
+        this.survivalThreshold = survivalThreshold;
+    }
+
     getState() {
         var neighborsAlive = 0;
 
